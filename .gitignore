@@ -1,0 +1,12 @@
+/bin
+/build
+*.exe
+*.out
+
+.env
+*.key
+
+
+.vscode/
+.idea/
+*.DS_Store
