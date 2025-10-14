@@ -1,0 +1,19 @@
+### Get Asset from Artic 
+GET http://localhost:8080/api/v1/artworks/aic/random
+Accept: application/json
+
+### Get Asset from Cleveland
+GET http://localhost:8080/api/v1/artworks/clv/random
+Accept: application/json
+
+### Get Asset from Getty
+GET http://localhost:8080/api/v1/artworks/getty/random
+Accept: application/json
+
+### Get Asset from Met
+GET http://localhost:8080/api/v1/artworks/met/random
+Accept: application/json
+
+### Get Asset from Harvard
+GET http://localhost:8080/api/v1/artworks/hrv/random
+Accept: application/json
