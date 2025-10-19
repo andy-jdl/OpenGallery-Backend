@@ -37,6 +37,7 @@ func (cm *ClevelandArtData) ExtractFields() string {
 	return strings.Join(artists, ",")
 }
 
+// Get entire image set
 type ImageSet struct {
 	Web ImageMetadata `json:"web"`
 }

@@ -58,15 +58,15 @@ func (g *GettyService) NormalizeMetadata(metadata any) ([]models.ArtworkMetadata
 
 func (g *GettyService) BuildResponse(m models.ArtworkMetadata) (models.ArtworkResponse, error) {
 	return models.ArtworkResponse{
-		ID:            m.ID,
-		Title:         m.Title,
-		ArtistDisplay: m.Artist,
-		Description:   m.Description,
-		ImageID:       m.ImageID,
-		ImageURL:      m.ImageURL,
-		Museum:        m.Museum,
-		Related:       m.Related,
-		Attribution:   "Courtesy of the J. Paul Getty Museum, Los Angeles",
+		ID:          m.ID,
+		Title:       m.Title,
+		Artist:      m.Artist,
+		Description: m.Description,
+		ImageID:     m.ImageID,
+		ImageURL:    m.ImageURL,
+		Museum:      m.Museum,
+		Related:     m.Related,
+		Attribution: "Courtesy of the J. Paul Getty Museum, Los Angeles",
 	}, nil
 }
 

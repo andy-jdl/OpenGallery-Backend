@@ -2,7 +2,6 @@ package server
 
 import (
 	"api/core/config"
-	"api/core/repository"
 	"api/core/routes"
 	"log"
 	"log/slog"
@@ -13,11 +12,8 @@ import (
 
 type Server struct {
 	router *gin.Engine
-	db     repository.DBClient
 	config *config.Config
-	// s3 bucket if you need it
-	// validation *validator.Validate
-	// translate *ut.Translator
+	// s3 bucket plans to host small gallery/artist images
 }
 
 func (s *Server) Start() error {
@@ -30,7 +26,7 @@ func (s *Server) Start() error {
 	return nil
 }
 
-func NewServer(db repository.DBClient, cfg *config.Config) *Server {
+func NewServer(cfg *config.Config) *Server {
 	config := cors.Config{
 		AllowOrigins:     []string{"http://localhost:3000"},
 		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE"},
@@ -41,7 +37,6 @@ func NewServer(db repository.DBClient, cfg *config.Config) *Server {
 
 	server := Server{
 		router: gin.Default(),
-		db:     db,
 		config: cfg,
 	}
 

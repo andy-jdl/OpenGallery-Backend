@@ -21,14 +21,14 @@ func (m *MetService) BuildIIIFImageURL(iiifURL string, imageID string) string {
 
 func (ms *MetService) BuildResponse(m models.ArtworkMetadata) (models.ArtworkResponse, error) {
 	return models.ArtworkResponse{
-		ID:            m.ID,
-		Title:         m.Title,
-		ArtistDisplay: m.Artist,
-		ImageID:       m.ImageID,
-		ImageURL:      m.ImageURL,
-		Museum:        m.Museum,
-		Related:       m.Related,
-		Attribution:   "Courtesy of The Metropolitan Museum of Art, New York",
+		ID:          m.ID,
+		Title:       m.Title,
+		Artist:      m.Artist,
+		ImageID:     m.ImageID,
+		ImageURL:    m.ImageURL,
+		Museum:      m.Museum,
+		Related:     m.Related,
+		Attribution: "Courtesy of The Metropolitan Museum of Art, New York",
 	}, nil
 }
 
@@ -77,7 +77,6 @@ func (m *MetService) NormalizeMetadata(metadata any) ([]models.ArtworkMetadata, 
 	var result []models.ArtworkMetadata
 	for _, item := range data {
 
-		// Confirm artist are being picked
 		artists := item.ExtractFields()
 
 		meta := models.ArtworkMetadata{

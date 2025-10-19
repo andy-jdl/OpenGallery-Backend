@@ -71,14 +71,14 @@ func (c *ClevelandService) NormalizeMetadata(metadata any) ([]models.ArtworkMeta
 
 func (c *ClevelandService) BuildResponse(m models.ArtworkMetadata) (models.ArtworkResponse, error) {
 	return models.ArtworkResponse{
-		ID:            m.ID,
-		Title:         m.Title,
-		ArtistDisplay: m.Artist,
-		Description:   m.Description,
-		ImageID:       m.ImageID,
-		ImageURL:      m.ImageURL,
-		Museum:        m.Museum,
-		Attribution:   "Courtesy of the The Cleveland Museum of Art",
+		ID:          m.ID,
+		Title:       m.Title,
+		Artist:      m.Artist,
+		Description: m.Description,
+		ImageID:     m.ImageID,
+		ImageURL:    m.ImageURL,
+		Museum:      m.Museum,
+		Attribution: "Courtesy of the The Cleveland Museum of Art",
 	}, nil
 }
 

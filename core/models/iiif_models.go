@@ -3,15 +3,15 @@ package models
 import "time"
 
 type ArtworkResponse struct {
-	ID            string `json:"id"`
-	Title         string `json:"title"`
-	ArtistDisplay string `json:"artist_display"`
-	Description   string `json:"description"`
-	ImageID       string `json:"image_id"`
-	ImageURL      string `json:"image_url"`
-	Museum        string `json:"museum"`
-	Related       string `json:"related"`
-	Attribution   string
+	ID          string `json:"id"`
+	Title       string `json:"title"`
+	Artist      string `json:"artist"`
+	Description string `json:"description"`
+	ImageID     string `json:"image_id"`
+	ImageURL    string `json:"image_url"`
+	Museum      string `json:"museum"`
+	Related     string `json:"related"`
+	Attribution string
 }
 
 type ArtworkMetadata struct {

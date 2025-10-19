@@ -21,14 +21,14 @@ func (h *HarvardService) BuildIIIFImageURL(iiifURL string, imageID string) strin
 
 func (h *HarvardService) BuildResponse(m models.ArtworkMetadata) (models.ArtworkResponse, error) {
 	return models.ArtworkResponse{
-		ID:            m.ID,
-		Title:         m.Title,
-		ArtistDisplay: m.Artist,
-		ImageID:       m.ImageID,
-		ImageURL:      m.ImageURL,
-		Museum:        m.Museum,
-		Related:       m.Related,
-		Attribution:   "Courtesy of The Harvard Art Museums",
+		ID:          m.ID,
+		Title:       m.Title,
+		Artist:      m.Artist,
+		ImageID:     m.ImageID,
+		ImageURL:    m.ImageURL,
+		Museum:      m.Museum,
+		Related:     m.Related,
+		Attribution: "Courtesy of The Harvard Art Museums",
 	}, nil
 }
 

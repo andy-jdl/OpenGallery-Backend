@@ -67,14 +67,14 @@ func (s *ArticService) NormalizeMetadata(metadata any) ([]models.ArtworkMetadata
 
 func (s *ArticService) BuildResponse(m models.ArtworkMetadata) (models.ArtworkResponse, error) {
 	return models.ArtworkResponse{
-		ID:            m.ID,
-		Title:         m.Title,
-		ArtistDisplay: m.Artist,
-		Description:   m.Description,
-		ImageID:       m.ImageID,
-		ImageURL:      s.BuildIIIFImageURL(m.IIIFURL, m.ImageID),
-		Museum:        m.Museum,
-		Attribution:   "Courtesy of the Art Institute of Chicago",
+		ID:          m.ID,
+		Title:       m.Title,
+		Artist:      m.Artist,
+		Description: m.Description,
+		ImageID:     m.ImageID,
+		ImageURL:    s.BuildIIIFImageURL(m.IIIFURL, m.ImageID),
+		Museum:      m.Museum,
+		Attribution: "Courtesy of the Art Institute of Chicago",
 	}, nil
 }
 

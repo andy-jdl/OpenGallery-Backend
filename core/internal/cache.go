@@ -41,7 +41,7 @@ func (c *Cache[T]) Set(key string, value T) {
 
 	item := CacheItem[T]{
 		Value:     value,
-		ExpiresAt: time.Now().Add(c.ttl), // fix this
+		ExpiresAt: time.Now().Add(c.ttl),
 	}
 
 	c.items[key] = item
