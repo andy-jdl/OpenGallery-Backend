@@ -23,6 +23,7 @@ func RegisterRoutes(r *gin.Engine, cfg *config.Config) {
 		service.NewClevelandService(client, cfg.APIs.ClevelandBaseURL),
 		service.NewMetService(client, cfg.APIs.MetBaseURL),
 		service.NewHarvardService(client, cfg.APIs.HarvardBaseURL.HarvardBaseURL, cfg.APIs.HarvardBaseURL.APIKey),
+		service.NewLouvreService(client, cfg.APIs.LouvreBaseURL),
 	)
 
 	repository := repository.NewArtworkRepository(cache, registry)

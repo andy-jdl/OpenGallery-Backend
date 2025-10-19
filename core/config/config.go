@@ -17,6 +17,7 @@ type APIConfig struct {
 	MetBaseURL       string
 	HarvardBaseURL   HarvardConfig
 	GettyBaseURL     string
+	LouvreBaseURL    string
 	ClevelandBaseURL string
 }
 
@@ -44,14 +45,14 @@ func LoadConfig() (*Config, error) {
 		},
 		Port: os.Getenv("PORT"),
 		APIs: APIConfig{
-			MetBaseURL:   "https://collectionapi.metmuseum.org/public/collection/v1/",
-			GettyBaseURL: "https://media.getty.edu/iiif/manifest",
+			MetBaseURL: "https://collectionapi.metmuseum.org/public/collection/v1/",
 			HarvardBaseURL: HarvardConfig{
 				HarvardBaseURL: "https://api.harvardartmuseums.org",
 				APIKey:         os.Getenv("HARVARD_API_KEY"),
 			},
 			ArticBaseURL:     "https://api.artic.edu/api/v1/artworks/",
 			ClevelandBaseURL: "https://openaccess-api.clevelandart.org/api/artworks/",
+			LouvreBaseURL:    "https://collections.louvre.fr/en/ark:/53355",
 		},
 	}
 
