@@ -3,6 +3,7 @@ package service
 import (
 	"api/core/models"
 	"api/core/service/shared"
+	core "api/core/utils"
 	"context"
 	"fmt"
 	"math/rand"
@@ -37,7 +38,7 @@ func (s *ArticService) FetchRawArtwork(ctx context.Context) (any, error) {
 func (s *ArticService) NormalizeMetadata(metadata any) ([]models.ArtworkMetadata, error) {
 	data, ok := metadata.(models.ArticMetadata)
 	if !ok {
-		return []models.ArtworkMetadata{}, fmt.Errorf("invalid metadata type for ArticService")
+		return []models.ArtworkMetadata{}, &core.InvalidMetadata{Code: 422, Message: "ArticService"}
 	}
 
 	var result []models.ArtworkMetadata

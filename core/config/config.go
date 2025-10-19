@@ -52,7 +52,7 @@ func LoadConfig() (*Config, error) {
 			},
 			ArticBaseURL:     "https://api.artic.edu/api/v1/artworks/",
 			ClevelandBaseURL: "https://openaccess-api.clevelandart.org/api/artworks/",
-			LouvreBaseURL:    "https://collections.louvre.fr/en/ark:/53355",
+			LouvreBaseURL:    "https://collections.louvre.fr/en/ark:/53355/",
 		},
 	}
 

@@ -3,6 +3,7 @@ package service
 import (
 	"api/core/models"
 	"api/core/service/shared"
+	core "api/core/utils"
 	"context"
 	"fmt"
 	"math/rand"
@@ -54,7 +55,7 @@ func (h *HarvardService) Name() string {
 func (h *HarvardService) NormalizeMetadata(metadata any) ([]models.ArtworkMetadata, error) {
 	records, ok := metadata.(models.HarvardRecords)
 	if !ok {
-		return []models.ArtworkMetadata{}, fmt.Errorf("invalid metadata type for HarvardService")
+		return []models.ArtworkMetadata{}, &core.InvalidMetadata{Code: 422, Message: "HarvardService"}
 	}
 	data := records.Records
 

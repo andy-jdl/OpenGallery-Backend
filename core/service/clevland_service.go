@@ -3,6 +3,7 @@ package service
 import (
 	"api/core/models"
 	"api/core/service/shared"
+	core "api/core/utils"
 	"context"
 	"fmt"
 	"math/rand"
@@ -42,7 +43,7 @@ func (c *ClevelandService) NormalizeMetadata(metadata any) ([]models.ArtworkMeta
 	data, ok := metadata.(models.ClevelandArtMetadata)
 
 	if !ok {
-		return []models.ArtworkMetadata{}, fmt.Errorf("invalid metadata type for ClevelandService")
+		return []models.ArtworkMetadata{}, &core.InvalidMetadata{Code: 422, Message: "ClevelandService"}
 	}
 
 	var result []models.ArtworkMetadata

@@ -3,6 +3,7 @@ package service
 import (
 	"api/core/models"
 	"api/core/service/shared"
+	core "api/core/utils"
 	"context"
 	"fmt"
 	"math/rand"
@@ -71,7 +72,7 @@ func (m *MetService) Name() string {
 func (m *MetService) NormalizeMetadata(metadata any) ([]models.ArtworkMetadata, error) {
 	data, ok := metadata.([]models.MetMetadata)
 	if !ok {
-		return []models.ArtworkMetadata{}, fmt.Errorf("invalid metadata type for MetService")
+		return []models.ArtworkMetadata{}, &core.InvalidMetadata{Code: 422, Message: "MetService"}
 	}
 
 	var result []models.ArtworkMetadata
