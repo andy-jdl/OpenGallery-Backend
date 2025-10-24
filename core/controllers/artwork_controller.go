@@ -11,7 +11,7 @@ import (
 )
 
 var (
-	providers    = []string{"aic", "met", "clv", "hrv"}
+	providers    = []string{"aic", "met", "clv", "hrv", "lve"}
 	lastProvider string
 	mu           sync.Mutex
 )
@@ -55,7 +55,7 @@ func (ac *ArtWorkController) GetRandomArtwork(c *gin.Context) {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 	}
 
-	c.JSON(http.StatusOK, gin.H{"source": source, "artwork": artWork})
+	c.JSON(http.StatusOK, artWork)
 }
 
 func GetRandomProvider() string {

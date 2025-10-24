@@ -43,7 +43,7 @@ func (s *ArticService) NormalizeMetadata(metadata any) ([]models.ArtworkMetadata
 
 	var result []models.ArtworkMetadata
 	for _, item := range data.Data {
-		// TODO make sure you're getting all artists
+
 		var artists string
 		if len(item.ArtistTitles) > 0 {
 			artists = strings.Join(item.ArtistTitles, ", ")

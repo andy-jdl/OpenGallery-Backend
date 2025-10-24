@@ -12,6 +12,7 @@ import (
 
 type LouvreService struct {
 	*shared.ArtService
+	data []string
 }
 
 func (l *LouvreService) BuildIIIFImageURL(iiifURL string, imageID string) string {
@@ -33,8 +34,7 @@ func (l *LouvreService) BuildResponse(m models.ArtworkMetadata) (models.ArtworkR
 
 func (l *LouvreService) FetchRawArtwork(ctx context.Context) (any, error) {
 	limit := 10
-	arkIDs := core.Flatten(core.GetCSVDataFromFile("core/internal/data/louvre_data.csv"))
-
+	arkIDs := append([]string(nil), l.data...)
 	rand.Shuffle(len(arkIDs), func(i, j int) {
 		arkIDs[i], arkIDs[j] = arkIDs[j], arkIDs[i]
 	})
@@ -86,7 +86,9 @@ func (l *LouvreService) NormalizeMetadata(metadata any) ([]models.ArtworkMetadat
 }
 
 func NewLouvreService(client *http.Client, baseURL string) *LouvreService {
+	data := core.Flatten(core.GetCSVDataFromFile("core/internal/data/louvre_data.csv"))
 	return &LouvreService{
 		ArtService: shared.NewArtServiceClient(client, baseURL),
+		data:       data,
 	}
 }
