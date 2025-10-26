@@ -61,7 +61,7 @@ func (c *ClevelandService) NormalizeMetadata(metadata any) ([]models.ArtworkMeta
 			Museum:      "Cleveland Museum of Art",
 			MuseumURL:   "https://www.clevelandart.org/home",
 			Gallery:     item.CurrentLocation,
-			Attribution: "Courtesy of the The Cleveland Museum of Art",
+			Attribution: "Courtesy of The Cleveland Museum of Art",
 		}
 
 		result = append(result, meta)
@@ -79,7 +79,7 @@ func (c *ClevelandService) BuildResponse(m models.ArtworkMetadata) (models.Artwo
 		ImageID:     m.ImageID,
 		ImageURL:    m.ImageURL,
 		Museum:      m.Museum,
-		Attribution: "Courtesy of the The Cleveland Museum of Art",
+		Attribution: "Courtesy of The Cleveland Museum of Art",
 	}, nil
 }
 

@@ -9,7 +9,6 @@ import (
 	"math/rand"
 	"net/http"
 	"strconv"
-	"strings"
 )
 
 type ArticService struct {
@@ -25,7 +24,7 @@ func NewArticService(client *http.Client, baseURL string) *ArticService {
 func (s *ArticService) FetchRawArtwork(ctx context.Context) (any, error) {
 	totalPages := 6095
 	page := rand.Intn(totalPages)
-	path := fmt.Sprintf("?page=%d&query[term][is_public_domain]=true&limit=10&fields=short_description,id,title,artist_titles,image_id", page)
+	path := fmt.Sprintf("?page=%d&query[term][is_public_domain]=true&limit=10&fields=short_description,id,title,artist_titles,image_id,color", page)
 
 	var data models.ArticMetadata
 	if err := s.GetJSON(ctx, path, &data); err != nil {
@@ -44,10 +43,7 @@ func (s *ArticService) NormalizeMetadata(metadata any) ([]models.ArtworkMetadata
 	var result []models.ArtworkMetadata
 	for _, item := range data.Data {
 
-		var artists string
-		if len(item.ArtistTitles) > 0 {
-			artists = strings.Join(item.ArtistTitles, ", ")
-		}
+		color, artists := item.ExtractFields()
 
 		meta := models.ArtworkMetadata{
 			ID:          strconv.Itoa(item.ID),
@@ -55,10 +51,11 @@ func (s *ArticService) NormalizeMetadata(metadata any) ([]models.ArtworkMetadata
 			Title:       item.Title,
 			Artist:      artists,
 			Description: item.ShortDescription,
+			Colors:      *color,
 			IIIFURL:     data.Config.IiifURL,
 			Museum:      "Art Institute of Chicago",
 			MuseumURL:   "https://www.artic.edu",
-			Attribution: "Courtesy of the Art Institute of Chicago",
+			Attribution: "Courtesy of The Art Institute of Chicago",
 		}
 		result = append(result, meta)
 	}
@@ -74,8 +71,9 @@ func (s *ArticService) BuildResponse(m models.ArtworkMetadata) (models.ArtworkRe
 		Description: m.Description,
 		ImageID:     m.ImageID,
 		ImageURL:    s.BuildIIIFImageURL(m.IIIFURL, m.ImageID),
+		Colors:      m.Colors,
 		Museum:      m.Museum,
-		Attribution: "Courtesy of the Art Institute of Chicago",
+		Attribution: "Courtesy of The Art Institute of Chicago",
 	}, nil
 }
 

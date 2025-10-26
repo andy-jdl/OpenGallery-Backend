@@ -26,8 +26,9 @@ func (l *LouvreService) BuildResponse(m models.ArtworkMetadata) (models.ArtworkR
 		Artist:      m.Artist,
 		ImageID:     m.ImageID,
 		ImageURL:    m.ImageURL,
+		Description: m.Description,
 		Museum:      m.Museum,
-		Related:     m.Related,
+		Copyright:   m.Copyright,
 		Attribution: m.Attribution,
 	}, nil
 }
@@ -76,9 +77,11 @@ func (l *LouvreService) NormalizeMetadata(metadata any) ([]models.ArtworkMetadat
 			Title:       item.Title,
 			Artist:      artists,
 			ImageURL:    imageURL,
+			Description: item.Description,
 			Related:     item.Related,
 			Museum:      "The Louvre",
-			Attribution: copyright,
+			Copyright:   copyright,
+			Attribution: "Courtesy of The Louvre",
 		}
 		result = append(result, meta)
 	}

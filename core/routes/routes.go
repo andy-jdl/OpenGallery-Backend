@@ -15,7 +15,19 @@ import (
 )
 
 func RegisterRoutes(r *gin.Engine, cfg *config.Config) {
-	client := &http.Client{Timeout: 10 * time.Second}
+
+	transport := &HeaderTransport{
+		headers: map[string]string{
+			"User-Agent": "OpenGallery/1.0 (jdlc.andy@gmail.com)",
+			"Accept":     "application/json",
+		},
+		base: http.DefaultTransport,
+	}
+
+	client := &http.Client{
+		Timeout:   10 * time.Second,
+		Transport: transport,
+	}
 	cache := internal.NewCache[[]models.ArtworkMetadata](time.Minute * 120)
 
 	registry := registry.NewIIIFRegistry(

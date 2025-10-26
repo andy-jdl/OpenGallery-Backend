@@ -7,7 +7,6 @@ import (
 )
 
 type Config struct {
-	DB   PostGresConfig
 	Port string
 	APIs APIConfig
 }
@@ -26,23 +25,8 @@ type HarvardConfig struct {
 	APIKey         string
 }
 
-type PostGresConfig struct {
-	Username string
-	Password string
-	Name     string
-	Port     string
-	Host     string
-}
-
 func LoadConfig() (*Config, error) {
 	cfg := &Config{
-		DB: PostGresConfig{
-			Username: os.Getenv("DB_USERNAME"),
-			Password: os.Getenv("DB_PASSWORD"),
-			Name:     os.Getenv("DB_NAME"),
-			Host:     os.Getenv("DB_HOST"),
-			Port:     os.Getenv("DB_PORT"),
-		},
 		Port: os.Getenv("PORT"),
 		APIs: APIConfig{
 			MetBaseURL: "https://collectionapi.metmuseum.org/public/collection/v1/",
