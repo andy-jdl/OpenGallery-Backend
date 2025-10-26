@@ -23,5 +23,3 @@ Open Gallery would not be possible without the generosity and open access initia
 - [The Metropolitan Museum of Art](https://metmuseum.github.io/)
 - [The Getty Museum](https://data.getty.edu/)
 - More to follow
-
-Inspiration for this project came from wanting to know where a painting was displayed. (I never did find out.)
