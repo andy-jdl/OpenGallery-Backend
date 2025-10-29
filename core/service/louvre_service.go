@@ -30,6 +30,7 @@ func (l *LouvreService) BuildResponse(m models.ArtworkMetadata) (models.ArtworkR
 		Museum:      m.Museum,
 		Copyright:   m.Copyright,
 		Attribution: m.Attribution,
+		City:        "Paris",
 	}, nil
 }
 

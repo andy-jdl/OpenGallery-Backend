@@ -30,7 +30,8 @@ func (h *HarvardService) BuildResponse(m models.ArtworkMetadata) (models.Artwork
 		Colors:      m.Colors,
 		Museum:      m.Museum,
 		Related:     m.Related,
-		Attribution: "Courtesy of The Harvard Art Museums",
+		Attribution: m.Attribution,
+		City:        "Cambridge",
 	}, nil
 }
 
@@ -63,13 +64,14 @@ func (h *HarvardService) NormalizeMetadata(metadata any) ([]models.ArtworkMetada
 	var result []models.ArtworkMetadata
 	for _, item := range data {
 		artists, color := item.ExtractFields()
+
 		meta := models.ArtworkMetadata{
 			ID:          strconv.Itoa(item.ID),
 			ImageID:     strconv.Itoa(item.ObjectID),
 			Title:       item.Title,
 			Artist:      artists,
 			ImageURL:    item.PrimaryImageURL,
-			Colors:      color,
+			Colors:      models.ColorSpectrum{Profile: "rbg", Palette: color},
 			Museum:      "Harvard Art Museum",
 			MuseumURL:   "https://harvardartmuseums.org/",
 			Attribution: "Courtesy of The Harvard Art Museums",

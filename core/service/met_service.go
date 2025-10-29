@@ -29,13 +29,14 @@ func (ms *MetService) BuildResponse(m models.ArtworkMetadata) (models.ArtworkRes
 		ImageURL:    m.ImageURL,
 		Museum:      m.Museum,
 		Related:     m.Related,
-		Attribution: "Courtesy of The Metropolitan Museum of Art, New York",
+		Attribution: m.Attribution,
+		City:        "New York",
 	}, nil
 }
 
 func (m *MetService) FetchRawArtwork(ctx context.Context) (any, error) {
 	const limit = 10
-	queries := "q=isOnView=true&hasImages=true"
+	queries := "q=hasImages=true"
 	searchPath := fmt.Sprintf("search?%s", queries)
 
 	if len(m.idCache) == 0 {

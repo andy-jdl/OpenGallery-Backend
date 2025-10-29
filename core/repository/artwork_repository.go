@@ -59,6 +59,7 @@ func (ar *ArtworkRepository) GetRandomArtwork(ctx context.Context, source string
 		artworks, _ = ar.cache.Get(source)
 	}
 
+	// select artwork from cache at random
 	idx := rand.Intn(len(artworks))
 	selected := artworks[idx]
 

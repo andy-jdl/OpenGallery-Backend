@@ -2,7 +2,6 @@ package controllers
 
 import (
 	"api/core/repository"
-	"fmt"
 	"math/rand"
 	"net/http"
 	"sync"
@@ -22,20 +21,6 @@ type ArtWorkController struct {
 
 func NewArtworkController(repository *repository.ArtworkRepository) *ArtWorkController {
 	return &ArtWorkController{repository: repository}
-}
-
-func (ac *ArtWorkController) FetchArtWork(c *gin.Context) {
-	source := c.Param("source")
-
-	err := ac.repository.FetchArtwork(c, source)
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-		return
-	}
-
-	c.JSON(http.StatusOK, gin.H{
-		"message": fmt.Sprintf("Artworks from '%s' fetched and cached successfully", source),
-	})
 }
 
 func (ac *ArtWorkController) GetRandomArtworkWithSource(c *gin.Context) {

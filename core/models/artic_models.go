@@ -39,7 +39,8 @@ func (a *ArticData) ExtractFields() (*string, string) {
 
 func (a *ArticData) ExtractColor() *string {
 	if a.Color == nil {
-		return nil
+		empty := ""
+		return &empty
 	}
 	colorStr := fmt.Sprintf("%f, %f, %f", a.Color.Hue, a.Color.Light, a.Color.Saturation)
 	return &colorStr

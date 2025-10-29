@@ -51,7 +51,7 @@ func (s *ArticService) NormalizeMetadata(metadata any) ([]models.ArtworkMetadata
 			Title:       item.Title,
 			Artist:      artists,
 			Description: item.ShortDescription,
-			Colors:      *color,
+			Colors:      models.ColorSpectrum{Profile: "hls", Palette: *color},
 			IIIFURL:     data.Config.IiifURL,
 			Museum:      "Art Institute of Chicago",
 			MuseumURL:   "https://www.artic.edu",
@@ -73,7 +73,8 @@ func (s *ArticService) BuildResponse(m models.ArtworkMetadata) (models.ArtworkRe
 		ImageURL:    s.BuildIIIFImageURL(m.IIIFURL, m.ImageID),
 		Colors:      m.Colors,
 		Museum:      m.Museum,
-		Attribution: "Courtesy of The Art Institute of Chicago",
+		Attribution: m.Attribution,
+		City:        "Chicago",
 	}, nil
 }
 
