@@ -29,6 +29,7 @@ func (h *HarvardService) BuildResponse(m models.ArtworkMetadata) (models.Artwork
 		ImageURL:    m.ImageURL,
 		Colors:      m.Colors,
 		Museum:      m.Museum,
+		MuseumURL:   m.MuseumURL,
 		Related:     m.Related,
 		Attribution: m.Attribution,
 		City:        "Cambridge",

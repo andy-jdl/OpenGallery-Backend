@@ -79,6 +79,7 @@ func (c *ClevelandService) BuildResponse(m models.ArtworkMetadata) (models.Artwo
 		ImageID:     m.ImageID,
 		ImageURL:    m.ImageURL,
 		Museum:      m.Museum,
+		MuseumURL:   m.MuseumURL,
 		Attribution: m.Attribution,
 		City:        "Cleveland",
 	}, nil

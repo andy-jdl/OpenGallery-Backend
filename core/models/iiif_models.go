@@ -9,6 +9,7 @@ type ArtworkResponse struct {
 	ImageID     string        `json:"image_id"`
 	ImageURL    string        `json:"image_url"`
 	Museum      string        `json:"museum"`
+	MuseumURL   string        `json:"museum_url"`
 	Attribution string        `json:"attribution"`
 	Colors      ColorSpectrum `json:"colors"`
 	Related     string        `json:"related"`
@@ -35,7 +36,6 @@ type ArtworkMetadata struct {
 	Colors      ColorSpectrum `json:"colors"`
 	Attribution string        `json:"attribution"`
 	Copyright   string        `json:"copyright"`
-	Explore     string        `json:"explore"`
 }
 
 type ArtworkBatch struct {

@@ -73,6 +73,7 @@ func (s *ArticService) BuildResponse(m models.ArtworkMetadata) (models.ArtworkRe
 		ImageURL:    s.BuildIIIFImageURL(m.IIIFURL, m.ImageID),
 		Colors:      m.Colors,
 		Museum:      m.Museum,
+		MuseumURL:   m.MuseumURL,
 		Attribution: m.Attribution,
 		City:        "Chicago",
 	}, nil

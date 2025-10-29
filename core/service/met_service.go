@@ -28,6 +28,7 @@ func (ms *MetService) BuildResponse(m models.ArtworkMetadata) (models.ArtworkRes
 		ImageID:     m.ImageID,
 		ImageURL:    m.ImageURL,
 		Museum:      m.Museum,
+		MuseumURL:   m.MuseumURL,
 		Related:     m.Related,
 		Attribution: m.Attribution,
 		City:        "New York",
